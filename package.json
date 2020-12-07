@@ -1,0 +1,14 @@
+{
+  "name": "sftp-uploader",
+  "version": "0.1.0",
+  "description": "sftp-uploader",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ssh2-sftp-client": "^5.3.2"
+  }
+}
