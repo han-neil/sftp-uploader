@@ -33,7 +33,9 @@ module.exports = {
           // 文件过滤器，可以过滤掉不需要的文件，返回false将不会上传该文件（可选）
           filterFile(path) => {
             return path.endsWith(.gz) ? true : false
-          }
+          },
+          // 预览链接接地址（可选）
+          previewPath: 'https://www.baidu.com'
         })
       ]
     }

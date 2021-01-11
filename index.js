@@ -12,11 +12,13 @@ module.exports = class sftpUploader {
     username = '',
     password = '',
     filterFile = null,
+    previewPath = '',
   } = {}) {
     // constructor是一个构造方法，用来接收参数
     this.url = url
     this.dir = dir
     this.filterFile = filterFile
+    this.previewPath = previewPath
     this.config = {
       host: host, // 服务器地址
       port: port,
@@ -93,9 +95,12 @@ module.exports = class sftpUploader {
   async uploadFileToSftp(files) {
     // 传输文件到服务器
     console.log('开始上传文件到目标文件夹')
+    const l = files.length
+    let i = 0
     for (const localSrc of files) {
+      i++
       const targetSrc = localSrc.replace(this.dir.replace(/\\/g, '/'), this.url)
-      console.log('+: ' + targetSrc)
+      console.log(`+(${i + '/' + l}): ` + targetSrc)
       if (fs.lstatSync(localSrc).isDirectory()) {
         // 是文件夹
         await sftp.mkdir(targetSrc)
@@ -104,6 +109,9 @@ module.exports = class sftpUploader {
       }
     }
     console.log(`已上传${files.length}个文件至SFTP服务器`)
+    if (this.previewPath) {
+      console.log(`预览地址：${this.previewPath}`)
+    }
     sftp.end()
   }
 
