@@ -1,3 +1,12 @@
+<!--
+ * @Descripttion:
+ * @version:
+ * @Author: 韩应波
+ * @Date: 2020-12-03 15:23:31
+ * @LastEditors: 韩应波
+ * @LastEditTime: 2021-01-28 10:01:12
+-->
+
 # sftpupload
 
 ### 引入
@@ -30,9 +39,13 @@ module.exports = {
           username: '*****',
           // 密码
           password: '*****',
-          // 文件过滤器，可以过滤掉不需要的文件，返回false将不会上传该文件（可选）
-          filterFile(path) => {
-            return path.endsWith(.gz) ? true : false
+          // 上传文件过滤器，可以过滤掉不需要的文件，返回false将不会上传该文件（可选）
+          uploadFilter(file) => {
+            return file.name.endsWith(.gz) ? true : false
+          },
+          // 删除文件过滤器，可以过滤掉不需要删除的文件，返回false将不会上传该文件（可选）
+          deleteFilter(file) => {
+            return file.name.endsWith(.gz) ? true : false
           },
           // 预览链接接地址（可选）
           previewPath: 'https://www.baidu.com'

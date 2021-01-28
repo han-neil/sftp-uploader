@@ -1,14 +1,18 @@
 {
   "name": "sftp-uploader",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "sftp-uploader",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pub": "nrm use npm && npm publish && nrm use taobao"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "glob": "^7.1.6",
+    "path": "^0.12.7",
+    "single-line-log": "^1.1.2",
     "ssh2-sftp-client": "^5.3.2"
   }
 }
