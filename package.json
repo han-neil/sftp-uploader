@@ -1,18 +1,36 @@
 {
   "name": "sftp-uploader",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "description": "sftp-uploader",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "files": [
+    "dist",
+    "src/type.d.ts",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "exports": {
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "pub": "nrm use npm && npm publish && nrm use taobao"
+    "build": "tsup src/index.ts --format cjs,esm --dts"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "glob": "^7.1.6",
-    "path": "^0.12.7",
+    "chalk": "4.1.2",
     "single-line-log": "^1.1.2",
     "ssh2-sftp-client": "^5.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.23",
+    "glob": "^7.1.6",
+    "path": "^0.12.7",
+    "tsup": "^4.11.2",
+    "typescript": "^4.6.3",
+    "vite": "^2.3.7"
   }
 }
